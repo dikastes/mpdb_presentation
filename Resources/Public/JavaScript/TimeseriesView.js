@@ -39,7 +39,12 @@ class TimeseriesView {
             .ticks(this._height / 25);
         this.target.append('g')
             .attr('transform', `translate(0,${this._height})`)
-            .call(this.tAxis);
+            .call(this.tAxis)
+            .selectAll('text')
+            .style('text-anchor', 'end')
+            .attr('dx', '-.8em')
+            .attr('dy', '-.5em')
+            .attr('transform', 'rotate(-90)');
 
         const area = d3.area()
             .x(d => this.tScale(+d.year))
